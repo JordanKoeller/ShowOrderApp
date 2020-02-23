@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Danceshow Ordering Generator
+
+  Lambda backend that randomly selects show orders and computes number of quickchanges. Returns the best it found.
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  ShowOrderLambdaFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: app/
+      Handler: main.main
+      Runtime: python3.7
+      Layers:
+        - arn:aws:lambda:us-east-1:668099181075:layer:AWSLambda-Python37-SciPy1x:2
+      Events:
+        ShowOrderEvt:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /index
+            Method: post
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  ShowOrderLambdaApi:
+    Description: "API Gateway endpoint URL for Prod stage for Show Order function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+  ShowOrderLambdaFunction:
+    Description: "Show Order Lambda Function ARN"
+    Value: !GetAtt ShowOrderLambdaFunction.Arn
+  ShowOrderLambdaFunctionIamRole:
+    Description: "Implicit IAM Role created for Show order function"
+    Value: !GetAtt ShowOrderLambdaFunctionRole.Arn

@@ -5,7 +5,7 @@
 ### C ###
 # Prerequisites
 *.d
-
+**/.vscode/
 # Object files
 *.o
 *.ko
@@ -331,3 +331,6 @@ tags
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+**/.aws-sam
+**/build
