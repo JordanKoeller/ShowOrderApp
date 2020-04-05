@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd lambdas
-./build.sh NoContainer
+./build.sh
 sam deploy

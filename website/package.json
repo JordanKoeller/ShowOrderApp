@@ -1,16 +1,23 @@
 {
-  "name": "show-order-frontend",
+  "name": "website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/react": "^16.9.20",
-    "@types/react-dom": "^16.9.5",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.4.0",
-    "typescript": "^3.7.5",
+    "@babel/runtime": "^7.6.2",
     "@material-ui/core": "^4.8.3",
-    "@material-ui/icons": "^4.4.1"
+    "@material-ui/icons": "^4.4.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "array-move": "2.0.0",
+    "react-smooth-dnd": "0.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-dropzone": "^10.2.0",
+    "react-papaparse": "^2.0.2",
+    "react-scripts": "^3.3.0",
+    "react-table": "^7.0.0-rc.15",
+    "react-test-renderer": "^16.9.0",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,18 +40,16 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "cobertura",
+      "lcov"
+    ]
+  },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.18.3"
-  },
-  "compilerOptions": {
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true
   }
 }

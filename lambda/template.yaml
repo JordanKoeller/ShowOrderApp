@@ -6,17 +6,16 @@ Description: >
   Lambda backend that randomly selects show orders and computes number of quickchanges. Returns the best it found.
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
-Globals:
-  Function:
-    Timeout: 3
 
 Resources:
   ShowOrderLambdaFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: app/
-      Handler: main.main
+      Handler: showorder.lambda_handler
       Runtime: python3.7
+      Timeout: 180
+      MemorySize: 1024
       Layers:
         - arn:aws:lambda:us-east-1:668099181075:layer:AWSLambda-Python37-SciPy1x:2
       Events:
